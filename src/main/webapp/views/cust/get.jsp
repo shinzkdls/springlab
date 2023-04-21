@@ -2,29 +2,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
     $(function () {
-        register_form.init();
+        //register_form.init();
     });
 </script>
 
 <div class="col-sm-8 text-left">
     <div class="container">
-        <form id="register_form" class="">
+        <h1>Detail Page</h1>
+        <form id="update_form" class="">
             <div class="container">
                 <p>Please fill in this form to create an account.</p>
                 <hr>
 
                 <label for="id"><b>ID</b></label>
-                <input type="text" placeholder="Enter ID" name="id" id="id" required>
+                <input type="text" value="${gcust.id}" name="id" id="id" required readonly>
 
                 <label for="pwd"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pwd" id="pwd" required>
+                <input type="password" value="${gcust.pwd}" name="pwd" id="pwd" required>
 
                 <label for="name"><b>Name</b></label>
-                <input type="text" placeholder="Enter Name" name="name" id="name" required>
+                <input type="text" value="${gcust.name}" name="name" id="name" required>
                 <hr>
 
                 <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-                <button id="register_btn" type="button" class="registerbtn">Register</button>
+                <button id="update_btn" type="button" class="registerbtn">Update</button>
+                <button id="remove_btn" type="button" class="registerbtn">Delete</button>
             </div>
         </form>
     </div>

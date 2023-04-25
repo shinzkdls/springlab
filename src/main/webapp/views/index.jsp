@@ -13,6 +13,21 @@
     <script src="/js/index0421.js"></script>
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d63e25a893507f610fac15ac30f6cab5"></script>
+    <!-- HighCharts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .navbar {

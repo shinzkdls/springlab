@@ -16,14 +16,13 @@
     </select>
     <insert id="insert" parameterType="item">
         INSERT INTO item
-        VALUES (#{id}, #{name}, #{price}, #{imgname}, #{rdate})
+        VALUES (item_seq.NEXTVAL, #{name}, #{price}, #{imgname}, SYSDATE)
     </insert>
     <update id="update" parameterType="item">
         UPDATE item
         SET name=#{name},
             price=#{price},
-            imgname=#{imgname},
-            rdate=#{rdate}
+            imgname=#{imgname}
         WHERE id = #{id}
     </update>
     <delete id="delete" parameterType="Integer">

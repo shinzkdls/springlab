@@ -5,19 +5,32 @@
 <mapper namespace="com.kbstar.mapper.MarkerMapper">
 
     <select id="select" parameterType="Integer" resultType="marker">
-        SELECT * FROM marker WHERE ID=#{id}
+        SELECT *
+        FROM marker
+        WHERE ID = #{id}
     </select>
     <select id="selectall" resultType="marker">
-        SELECT * FROM marker
+        SELECT *
+        FROM marker
     </select>
     <insert id="insert" parameterType="marker">
-        INSERT INTO marker VALUES (#{id},#{title},#{target},#{lat},#{lng},#{img},#{loc})
+        INSERT INTO marker
+        VALUES (marker_seq.NEXTVAL, #{title}, #{target}, #{lat}, #{lng}, #{img}, #{loc})
     </insert>
     <update id="update" parameterType="marker">
-        UPDATE marker SET title=#{title}, target=#{target}, lat=#{lat}, lng=#{lng},img=#{img}, loc=#{loc} WHERE id=#{id}
+        UPDATE marker
+        SET title=#{title},
+            target=#{target},
+            lat=#{lat},
+            lng=#{lng},
+            img=#{img},
+            loc=#{loc}
+        WHERE id = #{id}
     </update>
     <delete id="delete" parameterType="Integer">
-        DELETE FROM marker WHERE ID=#{id}
+        DELETE
+        FROM marker
+        WHERE ID = #{id}
     </delete>
 
 </mapper>

@@ -20,7 +20,7 @@ class DeleteTests {
         List<Item> list = null;
 
         try {
-            service.remove(200);
+            service.remove(120);
             log.info("삭제완료");
         } catch (Exception e) {
 

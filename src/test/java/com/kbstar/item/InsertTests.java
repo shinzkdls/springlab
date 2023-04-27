@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DuplicateKeyException;
 
-import java.util.Date;
-
 @Slf4j
 @SpringBootTest
 class InsertTests {
@@ -18,10 +16,10 @@ class InsertTests {
 
     @Test
     void contextLoads() {
-        Item obj = new Item(200, "티셔츠", 10000, "pwd21", new Date());
+        Item obj = new Item(0, "티셔츠", 10000, "e.jpg", null);
         try {
             service.register(obj);
-            log.info("등록정상...");
+            service.get();
         } catch (Exception e) {
             if (e instanceof DuplicateKeyException) {
                 log.info(".....상품ID가 중복되었습니다.......");

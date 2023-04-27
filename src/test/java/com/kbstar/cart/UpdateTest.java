@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DuplicateKeyException;
 
-import java.util.Date;
-
 @Slf4j
 @SpringBootTest
 class UpdateTest {
@@ -18,7 +16,7 @@ class UpdateTest {
 
     @Test
     void contextLoads() {
-        Cart obj = new Cart(103, "id03", 102, 7, new Date());
+        Cart obj = new Cart(103, "id03", 102, 7);
         try {
             service.modify(obj);
             log.info("등록 정상");

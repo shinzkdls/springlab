@@ -1,32 +1,28 @@
-package com.kbstar.item;
+package com.kbstar.cart;
 
-import com.kbstar.dto.Item;
-import com.kbstar.service.ItemService;
+import com.kbstar.dto.Cart;
+import com.kbstar.service.CartService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @SpringBootTest
-class UpdateTests {
+class SelectIdTest {
     @Autowired
-    ItemService service;
+    CartService service;
 
     @Test
     void contextLoads() {
-
+        List<Cart> cart = null;
         try {
-            service.modify(new Item(120, "청바지", 100000, "a.jpg", new Date()));
-            log.info("수정완료");
+            cart = service.getMyCart("id02");
         } catch (Exception e) {
-
-            log.info("......에러다.........");
+            log.info("에러...");
             e.printStackTrace();
         }
-
     }
 }
-

@@ -8,8 +8,8 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-public class Cust {
+public class Adm {
     private String id;
     private String pwd;
-    private String name;
+    private int lev;
 }

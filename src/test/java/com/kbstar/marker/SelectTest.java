@@ -1,7 +1,7 @@
-package com.kbstar.cust;
+package com.kbstar.marker;
 
-import com.kbstar.dto.Cust;
-import com.kbstar.service.CustService;
+import com.kbstar.service.AdmService;
+import com.kbstar.service.MarkerService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Slf4j
 @SpringBootTest
-class InsertTests {
+class SelectTest {
     @Autowired
-    CustService service;
-
+    MarkerService service;
     @Test
     void contextLoads() {
-        Cust obj = new Cust("id10", "pwd01", "james");
+//          List<Adm> list=null;
         try {
-            service.register(obj);
+//            list= service.get();
+            service.get();
         } catch (Exception e) {
-            log.info("등록 에러.....");
+            log.info("error...");
             e.printStackTrace();
         }
     }

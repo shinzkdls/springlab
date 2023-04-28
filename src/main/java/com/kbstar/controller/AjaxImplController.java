@@ -2,8 +2,11 @@ package com.kbstar.controller;
 
 import com.kbstar.dto.Cust;
 import com.kbstar.dto.Marker;
+import com.kbstar.service.CustService;
+import com.kbstar.service.MarkerService;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +18,11 @@ import java.util.Random;
 @RestController
 public class AjaxImplController {
 
+    @Autowired
+    MarkerService markerService;
+    @Autowired
+    CustService custService;
+
     @RequestMapping("/getservertime")
     public Object getservertime() {
         Date date = new Date();
@@ -22,9 +30,12 @@ public class AjaxImplController {
     }
 
     @RequestMapping("/checkid")
-    public Object checkid(String id) {
+    public Object checkid(String id) throws Exception {
         int result = 0;
-        if (id.equals("qqqq") || id.equals("aaaa") || id.equals("ssss")) {
+        Cust cust = null;
+        cust = custService.get(id);
+
+        if (cust != null) {
             result = 1;
         }
         return result;
@@ -56,25 +67,14 @@ public class AjaxImplController {
     }
 
     @RequestMapping("/markers")
-    public Object markers(String loc) {
+    public Object markers(String loc) throws Exception {
         List<Marker> list = new ArrayList<>();
 
-        if (loc.equals("s")) {
-            list.add(new Marker(100, "국밥집", "http://www.nate.com", 37.578798, 126.978548, "e.jpg", "s"));
-            list.add(new Marker(101, "짬뽕", "http://www.naver.com", 37.578746, 126.976572, "a.jpg", "s"));
-            list.add(new Marker(102, "껍데기", "http://www.daum.net", 37.578712, 126.977780, "b.jpg", "s"));
-        } else if (loc.equals("b")) {
-            list.add(new Marker(100, "국밥집", "http://www.nate.com", 35.154574, 129.160789, "e.jpg", "b"));
-            list.add(new Marker(101, "짬뽕", "http://www.naver.com", 35.158354, 129.160456, "a.jpg", "b"));
-            list.add(new Marker(102, "껍데기", "http://www.daum.net", 35.158234, 129.160857, "b.jpg", "b"));
-
-        } else if (loc.equals("j")) {
-            list.add(new Marker(100, "국밥집", "http://www.nate.com", 33.361321, 126.529875, "e.jpg", "j"));
-            list.add(new Marker(101, "짬뽕", "http://www.naver.com", 33.361924, 126.529215, "a.jpg", "j"));
-            list.add(new Marker(102, "껍데기", "http://www.daum.net", 33.361545, 126.528123, "b.jpg", "j"));
-
+        try {
+            list = markerService.getLoc(loc);
+        } catch (Exception e) {
+            throw new Exception("시스템 장애: ER0003");
         }
-
         JSONArray ja = new JSONArray();
         for (Marker obj : list) {
             JSONObject jo = new JSONObject();

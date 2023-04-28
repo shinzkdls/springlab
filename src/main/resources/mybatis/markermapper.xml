@@ -9,6 +9,11 @@
         FROM marker
         WHERE ID = #{id}
     </select>
+    <select id="getloc" parameterType="String" resultType="marker">
+        SELECT *
+        FROM marker
+        WHERE LOC = UPPER(#{loc})
+    </select>
     <select id="selectall" resultType="marker">
         SELECT *
         FROM marker

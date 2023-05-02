@@ -6,25 +6,40 @@
         <div class="row content">
             <div class="col-sm-6 text-left">
                 <div class="">
-                    <h3>Cust All Page</h3>
+                    <h3>Item All Page</h3>
                     <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th>IMG</th>
                             <th>ID</th>
                             <th>NAME</th>
+                            <th>PRICE</th>
+                            <th>REGDATE</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="c" items="${clist}">
+                        <c:forEach var="obj" items="${cpage.getList()}">
                             <tr>
-                                <td><a href="/cust/get?id=${c.id}">${c.id}</a></td>
-                                <td>${c.name}</td>
+                                <td><img class="medium_img" src="/uimg/${obj.imgname}">
+                                </td>
+                                <td>${obj.id}</td>
+                                <td>${obj.name}</td>
+                                <td><fmt:formatNumber value="${obj.price}" type="currency"/></td>
+                                <td><fmt:formatDate value="${obj.rdate}" pattern="yyyy-MM-dd"/></td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
+                    <jsp:include page="../page.jsp"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .medium_img {
+        width: 80px;
+        height: 80px;
+    }
+</style>

@@ -4,4 +4,5 @@
     <p>Item Left</p>
     <p><a href="/item/add">ADD</a></p>
     <p><a href="/item/all">ALL</a></p>
+    <p><a href="/item/allpage">ALL(Page)</a></p>
 </div>

@@ -82,12 +82,17 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="/jsp">JSP</a></li>
-                <li><a href="/ajax">AJAX</a></li>
-                <li><a href="/map">MAP</a></li>
-                <li><a href="/chart">CHART</a></li>
+
+                <c:if test="${logincust != null}">
+                    <li><a href="/jsp">JSP</a></li>
+                    <li><a href="/ajax">AJAX</a></li>
+                    <li><a href="/map">MAP</a></li>
+                    <li><a href="/chart">CHART</a></li>
+                </c:if>
+
                 <li><a href="/cust">Cust</a></li>
                 <li><a href="/item">Item</a></li>
+
                 <c:if test="${logincust != null}">
                     <li><a href="#">Contact</a></li>
                 </c:if>
@@ -101,7 +106,10 @@
                 </c:when>
                 <c:otherwise>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/custinfo?id=${logincust.id}">${logincust.id}</a></li>
                     </ul>
                 </c:otherwise>
             </c:choose>

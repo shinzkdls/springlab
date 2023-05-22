@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,11 @@ public class NcpController {
 
     @Value("${uploadimgdir}")
     String imgpath;
+    @Autowired
+    CFRCelebrityUtil celebrityUtil;
+
+    @Autowired
+    CFRFaceUtil cfrfaceUtil;
 
     @RequestMapping("/crf1impl")
     public String crf1impl(Model model, Ncp ncp) throws ParseException {
@@ -31,7 +37,7 @@ public class NcpController {
 
         // NCP에 요청한다.
         String imgname = ncp.getImg().getOriginalFilename();
-        JSONObject result = (JSONObject) CFRCelebrityUtil.getResult(imgpath, imgname);
+        JSONObject result = (JSONObject) celebrityUtil.getResult(imgpath, imgname);
         log.info(result.toJSONString());
 
         JSONArray faces = (JSONArray) result.get("faces");
@@ -54,7 +60,7 @@ public class NcpController {
 
         // NCP에 요청한다.
         String imgname = ncp.getImg().getOriginalFilename();
-        JSONObject result = (JSONObject) CFRFaceUtil.getResult(imgpath, imgname);
+        JSONObject result = (JSONObject) cfrfaceUtil.getResult(imgpath, imgname);
         log.info(result.toJSONString());
 
         String emotion_value = "";
@@ -100,7 +106,7 @@ public class NcpController {
     public String mycfr(Model model, String imgname) throws ParseException {
 
         // NCP에 요청한다.
-        JSONObject result = (JSONObject) CFRFaceUtil.getResult(imgpath, imgname);
+        JSONObject result = (JSONObject) cfrfaceUtil.getResult(imgpath, imgname);
         log.info(result.toJSONString());
 
         String emotion_value = "";

@@ -124,6 +124,7 @@
                 scrollBtn2.setAttribute("id", "scroll-btn2");
                 document.body.appendChild(scrollBtn2);
                 scrollBtn2.classList.add("show");
+                
                 scrollBtn2.addEventListener("click", function () {
                     location.href = '/callcenter';
                 });

@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Slf4j
 @SpringBootTest
-class Web21ApplicationTests {
+class Web22ApplicationTests {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
